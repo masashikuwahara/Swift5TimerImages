@@ -12,20 +12,42 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
-    
     @IBOutlet weak var startButton: UIButton!
     
-    
     @IBOutlet weak var stopButton: UIButton!
+    
+    var timer = Timer()
+    
+    
+    var count = Int()
+    
+    var imageArray = [UIImage]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        count = 0
         //stopButtonを押せなくする
         stopButton.isEnabled = true
         
+        
     }
 
+    func starttimer(){
+        //タイマーを回す 0.2秒ごとにあるメソッドを呼ぶ
+        
+        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(timerUpdate), userInfo: nil, repeats: true)
+    }
+    
+    //0.2秒ごとに呼ばれる
+    @objc func timerUpdate(){
+        
+        count = count + 1
+        imageView.image = imageArray[count]
+        
+    }
+    
+    
     
     @IBAction func start(_ sender: Any) {
         
