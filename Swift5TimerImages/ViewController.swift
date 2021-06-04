@@ -30,6 +30,17 @@ class ViewController: UIViewController {
         //stopButtonを押せなくする
         stopButton.isEnabled = true
         
+        for i in 0..<5{
+            
+            print(i)
+            
+            let image = UIImage(named: "\(i)")
+            imageArray.append(image!)
+        }
+        
+        
+        imageView.image =  UIImage(named: "0")
+        
         
     }
 
